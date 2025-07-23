@@ -13,7 +13,9 @@ import { Brands } from './components/brands/brands';
 import { NotFound } from './components/not-found/not-found';
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
+// import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,8 @@ import { FormsModule } from '@angular/forms';
     Navbar,
     Footer,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [provideBrowserGlobalErrorListeners()],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })
 export class AppModule {}

@@ -1,31 +1,104 @@
 <div class="w-75 p-4 mx-auto">
-  <form (ngSubmit)="handleSubmit(formObject)" #formObject="ngForm">
-    <label class="my-2" for="username">Username</label>
+  <!-- <form (ngSubmit)="handleSubmit(formObject)" #formObject="ngForm"> -->
+  <form [formGroup]="signUpFormObj" (ngSubmit)="handleSubmit()">
+    <label class="my-2" for="name"
+      >name <span class="text-danger">*</span></label
+    >
     <input
-      ngModel
-      name="username"
+      formControlName="name"
+      name="name"
       class="mt-2 form-control"
       type="text"
-      id="username"
+      id="name"
     />
+    @if(signUpFormObj.get('name')?.touched){
+    <div>
+      @if(signUpFormObj.get('name')?.getError('required')){
+      <p class="tex-small mt-0 text-danger">username is required</p>
+      } @else if(signUpFormObj.get('name')?.getError('minlength')){
+      <p class="tex-small mt-0 text-danger">username min length is 3 chars</p>
+      } @else if(signUpFormObj.get('name')?.getError('maxlength')){
+      <p class="tex-small mt-0 text-danger">username max length is 20 chars</p>
+      }
+    </div>
+    }
 
-    <label class="my-2" for="email">Email</label>
+    <label class="my-2" for="email"
+      >Email <span class="text-danger">*</span></label
+    >
     <input
-      ngModel
+      formControlName="email"
       name="email"
       class="mt-2 form-control"
       type="email"
       id="email"
     />
+    @if(signUpFormObj.get('email')?.touched){
+    <div>
+      @if(signUpFormObj.get('email')?.getError('required')){
+      <p class="tex-small mt-0 text-danger">email is required</p>
+      } @else if(signUpFormObj.get('email')?.getError('email')){
+      <p class="tex-small mt-0 text-danger">Enter a valid email format</p>
+      }
+    </div>
+    }
 
-    <label class="my-2" for="password">Password</label>
+    <label class="my-2" for="password"
+      >Password <span class="text-danger">*</span></label
+    >
     <input
-      ngModel
+      formControlName="password"
       name="password"
       class="mt-2 form-control"
       type="password"
       id="password"
     />
+    @if(signUpFormObj.get('password')?.touched){
+    <div>
+      @if(signUpFormObj.get('password')?.getError('required')){
+      <p class="tex-small mt-0 text-danger">Password is required</p>
+      } @else if(signUpFormObj.get('password')?.getError('pattern')){
+      <p class="tex-small mt-0 text-danger">1 Cap, 1 small , 3chars</p>
+      }
+    </div>
+    }
+
+    <label class="my-2" for="rePassword"
+      >Confirm password <span class="text-danger">*</span></label
+    >
+    <input
+      formControlName="rePassword"
+      name="rePassword"
+      class="mt-2 form-control"
+      type="password"
+      id="rePassword"
+    />
+    @if(signUpFormObj.get('rePassword')?.touched){
+    <div>
+      @if(signUpFormObj.get('rePassword')?.getError('required')){
+      <p class="tex-small mt-0 text-danger">Password is required</p>
+      } @else if(signUpFormObj.get('rePassword')?.getError('pattern')){
+      <p class="tex-small mt-0 text-danger">1 Cap, 1 small , 3chars</p>
+      }
+    </div>
+    }
+    <label class="my-2" for="phone"
+      >Phone <span class="text-danger">*</span></label
+    >
+    <input
+      formControlName="phone"
+      name="phone"
+      class="mt-2 form-control"
+      type="tel"
+      id="phone"
+    />
+    @if(signUpFormObj.get('phone')?.touched){
+    <div>
+      @if(signUpFormObj.get('phone')?.getError('required')){
+      <p class="tex-small mt-0 text-danger">Phone is required</p>
+      }
+    </div>
+    }
     <button class="btn btn-success my-4">Submit</button>
   </form>
 </div>
