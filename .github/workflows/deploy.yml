@@ -3,7 +3,7 @@ name: Deploy Angular App to A2Hosting via FTP
 on:
   push:
     branches:
-      - main  # or your deployment branch
+      - main # or your deployment branch
 
 jobs:
   build-and-deploy:
@@ -30,5 +30,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/Angular-e-commerce
+          local-dir: dist/Angular-e-commerce/
           server-dir: angularecom.imonline.ca/
