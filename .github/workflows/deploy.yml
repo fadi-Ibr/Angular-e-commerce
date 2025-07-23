@@ -31,4 +31,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/Angular-e-commerce
-          server-dir: /
+          server-dir: angularecom.imonline.ca/
