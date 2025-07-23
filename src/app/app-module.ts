@@ -13,6 +13,7 @@ import { Brands } from './components/brands/brands';
 import { NotFound } from './components/not-found/not-found';
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,15 +27,10 @@ import { Footer } from './components/footer/footer';
     Brands,
     NotFound,
     Navbar,
-    Footer
+    Footer,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners()
-  ],
-  bootstrap: [App]
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [provideBrowserGlobalErrorListeners()],
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}

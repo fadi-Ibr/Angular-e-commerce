@@ -1,1 +1,31 @@
-<p>sign-up works!</p>
+<div class="w-75 p-4 mx-auto">
+  <form (ngSubmit)="handleSubmit(formObject)" #formObject="ngForm">
+    <label class="my-2" for="username">Username</label>
+    <input
+      ngModel
+      name="username"
+      class="mt-2 form-control"
+      type="text"
+      id="username"
+    />
+
+    <label class="my-2" for="email">Email</label>
+    <input
+      ngModel
+      name="email"
+      class="mt-2 form-control"
+      type="email"
+      id="email"
+    />
+
+    <label class="my-2" for="password">Password</label>
+    <input
+      ngModel
+      name="password"
+      class="mt-2 form-control"
+      type="password"
+      id="password"
+    />
+    <button class="btn btn-primary my-4">Submit</button>
+  </form>
+</div>
