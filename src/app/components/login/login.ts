@@ -34,6 +34,8 @@ export class Login implements OnDestroy {
         .subscribe({
           next: (response) => {
             console.log(response);
+            this.isloading = false;
+            localStorage.setItem('appToken', JSON.stringify(response.token));
             this.router.navigate(['/home']);
           },
           error: (err) => {
