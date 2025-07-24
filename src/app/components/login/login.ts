@@ -14,7 +14,7 @@ export class Login implements OnDestroy {
   loginSubscription!: Subscription;
   constructor(private authService: Auth, private router: Router) {}
   ngOnDestroy(): void {
-    this.loginSubscription.unsubscribe();
+    this.loginSubscription?.unsubscribe();
   }
   loginFormObject: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),

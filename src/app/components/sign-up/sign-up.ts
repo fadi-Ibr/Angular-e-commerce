@@ -50,7 +50,7 @@ export class SignUp implements OnDestroy {
   );
   constructor(private authService: Auth, private router: Router) {}
   ngOnDestroy(): void {
-    this.signUpSubscription.unsubscribe();
+    this.signUpSubscription?.unsubscribe();
   }
 
   handleSubmit() {
