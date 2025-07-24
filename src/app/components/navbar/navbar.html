@@ -15,6 +15,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      @if(userLoggedIn){
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a
@@ -49,6 +50,7 @@
           >
         </li>
       </ul>
+      }
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item d-flex align-items-center">
           <div>
@@ -59,6 +61,7 @@
             <i class="mx-2 fab fa-youtube"></i>
           </div>
         </li>
+        @if(!userLoggedIn){
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="text-main" routerLink="register"
             >Register</a
@@ -69,11 +72,13 @@
             >Login</a
           >
         </li>
+        }@else {
         <li class="nav-item">
           <a class="nav-link cursor-pointer" routerLink="" (click)="logout()"
             >Signout</a
           >
         </li>
+        }
       </ul>
     </div>
   </div>

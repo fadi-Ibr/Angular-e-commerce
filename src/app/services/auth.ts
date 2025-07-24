@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { RegisterRequest } from '../interfaces/register-request';
 import { LoginRequest } from '../interfaces/login-request';
 import { Router } from '@angular/router';
@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class Auth {
   constructor(private httpClient: HttpClient, private router: Router) {}
-
+  isloggedIn = new BehaviorSubject<boolean>(
+    localStorage.getItem('appToken') ? true : false
+  );
   signUp(registerObj: RegisterRequest): Observable<any> {
     return this.httpClient.post(
       'https://ecommerce.routemisr.com/api/v1/auth/signup',
@@ -24,6 +26,7 @@ export class Auth {
     );
   }
   logOut() {
+    this.isloggedIn.next(false);
     localStorage.removeItem('appToken');
     this.router.navigate(['/login']);
   }
