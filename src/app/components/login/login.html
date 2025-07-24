@@ -1,1 +1,57 @@
-<p>login works!</p>
+<div class="w-75 p-4 mx-auto">
+  <!-- <form (ngSubmit)="handleSubmit(formObject)" #formObject="ngForm"> -->
+  <form [formGroup]="loginFormObject" (ngSubmit)="handleLogin()">
+    @if(responseErrMessage){
+    <p class="alert alert-danger text-center my-2">{{ responseErrMessage }}</p>
+    }
+
+    <label class="my-2" for="email"
+      >Email <span class="text-danger">*</span></label
+    >
+    <input
+      formControlName="email"
+      name="email"
+      class="mt-2 form-control"
+      type="email"
+      id="email"
+    />
+    @if(loginFormObject.get('email')?.touched){
+    <div>
+      @if(loginFormObject.get('email')?.getError('required')){
+      <p class="tex-small mt-0 text-danger">email is required</p>
+      } @else if(loginFormObject.get('email')?.getError('email')){
+      <p class="tex-small mt-0 text-danger">Enter a valid email format</p>
+      }
+    </div>
+    }
+
+    <label class="my-2" for="password"
+      >Password <span class="text-danger">*</span></label
+    >
+    <input
+      formControlName="password"
+      name="password"
+      class="mt-2 form-control"
+      type="password"
+      id="password"
+    />
+    @if(loginFormObject.get('password')?.touched){
+    <div>
+      @if(loginFormObject.get('password')?.getError('required')){
+      <p class="tex-small mt-0 text-danger">Password is required</p>
+      } @else if(loginFormObject.get('password')?.getError('pattern')){
+      <p class="tex-small mt-0 text-danger">1 Cap, 1 small , 3chars</p>
+      }
+    </div>
+    }
+    <button
+      [disabled]="loginFormObject.invalid || isloading"
+      class="btn btn-success my-4"
+    >
+      @if(!isloading){<span>Login </span>}@else{<span
+        class="fa-solid fa-spinner fa-spin"
+      ></span
+      >}
+    </button>
+  </form>
+</div>
