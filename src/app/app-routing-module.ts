@@ -13,6 +13,7 @@ import { VerifyCode } from './components/verify-code/verify-code';
 import { ResetPassword } from './components/reset-password/reset-password';
 import { authGuard } from './guards/auth-guard';
 import { nauthGuard } from './guards/nauth-guard';
+import { confirmsaveGuard } from './guards/confirmsave-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,7 +23,12 @@ const routes: Routes = [
   { path: 'categories', canActivate: [authGuard], component: Categories },
   { path: 'brands', canActivate: [authGuard], component: Brands },
   { path: 'login', canActivate: [nauthGuard], component: Login },
-  { path: 'register', canActivate: [nauthGuard], component: SignUp },
+  {
+    path: 'register',
+    canActivate: [nauthGuard],
+    canDeactivate: [confirmsaveGuard],
+    component: SignUp,
+  },
   {
     path: 'forget-password',
     canActivate: [nauthGuard],
