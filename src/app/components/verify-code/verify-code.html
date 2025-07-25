@@ -1,0 +1,43 @@
+<div class="w-75 p-4 mx-auto">
+  <!-- <form (ngSubmit)="handleSubmit(formObject)" #formObject="ngForm"> -->
+  <h2>Forgot your password?</h2>
+  <p class="mt-4 text-secondary font-sm">
+    We have sent a verfification code to your email address. Please enter the
+    code below to verify your identity and proceed to reset your password
+  </p>
+  <form [formGroup]="verifyCodeForm" (ngSubmit)="handleVerifyCode()">
+    @if(responseErrMessage){
+    <p class="alert alert-danger text-center my-2">{{ responseErrMessage }}</p>
+    }
+
+    <label class="my-2" for="verifyCode"
+      >Verify Code <span class="text-danger">*</span></label
+    >
+    <input
+      formControlName="resetCode"
+      name="verifyCode"
+      class="mt-2 form-control"
+      type="text"
+      id="verifyCode"
+    />
+    @if(verifyCodeForm.get('verifyCode')?.touched){
+    <div>
+      @if(verifyCodeForm.get('verifyCode')?.getError('required')){
+      <p class="tex-small mt-0 text-danger">verifyCode is required</p>
+      }
+    </div>
+    }
+
+    <div class="d-flex justify-content-end align-items-baseline">
+      <button
+        [disabled]="verifyCodeForm.invalid || isloading"
+        class="btn btn-success my-4"
+      >
+        @if(!isloading){<span>Send </span>}@else{<span
+          class="fa-solid fa-spinner fa-spin"
+        ></span
+        >}
+      </button>
+    </div>
+  </form>
+</div>

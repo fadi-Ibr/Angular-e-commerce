@@ -15,6 +15,9 @@ import { Navbar } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { ForgetPassword } from './components/forget-password/forget-password';
+import { VerifyCode } from './components/verify-code/verify-code';
+import { ResetPassword } from './components/reset-password/reset-password';
 // import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -30,6 +33,9 @@ import { provideHttpClient } from '@angular/common/http';
     NotFound,
     Navbar,
     Footer,
+    ForgetPassword,
+    VerifyCode,
+    ResetPassword,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

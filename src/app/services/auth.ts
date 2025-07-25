@@ -30,4 +30,22 @@ export class Auth {
     localStorage.removeItem('appToken');
     this.router.navigate(['/login']);
   }
+  forgetPassword(form: any): Observable<any> {
+    return this.httpClient.post(
+      'https://ecommerce.routemisr.com/api/v1/auth/forgotPasswords',
+      form
+    );
+  }
+  verifyResetCode(form: any): Observable<any> {
+    return this.httpClient.post(
+      'https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode',
+      form
+    );
+  }
+  resetPassword(form: any): Observable<any> {
+    return this.httpClient.put(
+      'https://ecommerce.routemisr.com/api/v1/auth/resetPassword',
+      form
+    );
+  }
 }

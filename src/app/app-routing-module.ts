@@ -8,6 +8,9 @@ import { Brands } from './components/brands/brands';
 import { Login } from './components/login/login';
 import { SignUp } from './components/sign-up/sign-up';
 import { NotFound } from './components/not-found/not-found';
+import { ForgetPassword } from './components/forget-password/forget-password';
+import { VerifyCode } from './components/verify-code/verify-code';
+import { ResetPassword } from './components/reset-password/reset-password';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +21,9 @@ const routes: Routes = [
   { path: 'brands', component: Brands },
   { path: 'login', component: Login },
   { path: 'register', component: SignUp },
+  { path: 'forget-password', component: ForgetPassword },
+  { path: 'verify-code', component: VerifyCode },
+  { path: 'reset-password', component: ResetPassword },
   { path: '**', component: NotFound },
 ];
 
