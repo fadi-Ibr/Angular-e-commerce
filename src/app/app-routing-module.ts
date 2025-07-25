@@ -11,19 +11,29 @@ import { NotFound } from './components/not-found/not-found';
 import { ForgetPassword } from './components/forget-password/forget-password';
 import { VerifyCode } from './components/verify-code/verify-code';
 import { ResetPassword } from './components/reset-password/reset-password';
+import { authGuard } from './guards/auth-guard';
+import { nauthGuard } from './guards/nauth-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: Home },
-  { path: 'products', component: Products },
-  { path: 'cart', component: Cart },
-  { path: 'categories', component: Categories },
-  { path: 'brands', component: Brands },
-  { path: 'login', component: Login },
-  { path: 'register', component: SignUp },
-  { path: 'forget-password', component: ForgetPassword },
-  { path: 'verify-code', component: VerifyCode },
-  { path: 'reset-password', component: ResetPassword },
+  { path: 'home', canActivate: [authGuard], component: Home },
+  { path: 'products', canActivate: [authGuard], component: Products },
+  { path: 'cart', canActivate: [authGuard], component: Cart },
+  { path: 'categories', canActivate: [authGuard], component: Categories },
+  { path: 'brands', canActivate: [authGuard], component: Brands },
+  { path: 'login', canActivate: [nauthGuard], component: Login },
+  { path: 'register', canActivate: [nauthGuard], component: SignUp },
+  {
+    path: 'forget-password',
+    canActivate: [nauthGuard],
+    component: ForgetPassword,
+  },
+  { path: 'verify-code', canActivate: [nauthGuard], component: VerifyCode },
+  {
+    path: 'reset-password',
+    canActivate: [nauthGuard],
+    component: ResetPassword,
+  },
   { path: '**', component: NotFound },
 ];
 
